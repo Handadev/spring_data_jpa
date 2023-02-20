@@ -14,8 +14,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * MmeberRepositoryCustom 을 extends 로 받아온 다음 그대로 사용하게 되면,
+ * spring data 에서 자동으로 MemberRepositoryImpl 을 사용하게 도와준다
+ */
 @Repository
-public interface MemberRepository extends JpaRepository<Member, Long> {
+public interface MemberRepository extends JpaRepository<Member, Long>, MemberRepositoryCustom {
 
     List<Member> findByUserNameAndAgeGreaterThan(String userName, int age);
 
